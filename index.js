@@ -15,6 +15,11 @@ const questions = [
     message: 'What was your motivation? Why did you build this project? What problem does it solve? What did you learn?',
     name: 'description'
   },
+//   {
+//     type: 'input',
+//     message: '',
+//     name: 'tableofcontents'
+//   },
   {
     type: 'input',
     message: 'What are the steps required to install your project?',
@@ -24,11 +29,6 @@ const questions = [
     type: 'input',
     message: 'What are the instructions and examples for use of your project?',
     name: 'usage'
-  },
-  {
-    type: 'input',
-    message: 'Who collaborated with you on this project? What are the links to tutorials you used for this project?',
-    name: 'credits'
   },
   {
     type: 'list',
@@ -43,20 +43,24 @@ const questions = [
   },
   {
     type: 'input',
-    message: 'What are your projects features?',
-    name: 'features'
-  },
-  {
-    type: 'input',
     message: 'What are the guidelines for other developers to contribute?',
-    name: 'howtocontribute'
+    name: 'contributing'
   },
   {
     type: 'input',
     message: 'What are examples on how to run tests?',
     name: 'tests'
   },
-
+  {
+    type: 'input',
+    message: 'Enter your GitHub username:',
+    name: 'username'
+  },
+  {
+    type: 'input',
+    message: 'Enter your email address:',
+    name: 'email'
+  },
 ];
 
 // TODO: Create a function to write README file
@@ -70,7 +74,7 @@ function init() {
     const template = generateMarkdown(response)
     console.log(template)
     fs.writeFile('./utils/README.md', template, (err) =>
-    err ? console.log(err) : console.log('Successfully created README.md!')
+    err ? console.log(err) : console.log('Successfully created your README.md!')
   );
     })
 }
@@ -78,7 +82,30 @@ function init() {
 function generateMarkdown(data) {
     console.log(data)
     return `# ${data.title}
-  
+## Description
+${data.description}
+## Table of Contents
+Installation
+Usage
+License
+Contributing
+Tests
+Questions
+## Installation
+${data.installation}
+## Usage
+${data.usage}
+## License
+${data.license}
+## Badges
+${data.badges}
+## How to Contribute
+${data.contributing}
+## Tests
+${data.tests}
+## Questions
+https://github.com/${data.username}
+Please email me at ${data.email} for any additional questions.
   `;
   }
   
