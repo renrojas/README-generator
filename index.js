@@ -15,11 +15,6 @@ const questions = [
     message: 'What was your motivation? Why did you build this project? What problem does it solve? What did you learn?',
     name: 'description'
   },
-//   {
-//     type: 'input',
-//     message: '',
-//     name: 'tableofcontents'
-//   },
   {
     type: 'input',
     message: 'What are the steps required to install your project?',
@@ -33,13 +28,8 @@ const questions = [
   {
     type: 'list',
     message: 'What is the License you are using?',
-    choices: ['None', 'Apache License 2.0', 'GNU General Public License v3.0', 'MIT License'],
+    choices: ['None', 'Apache 2.0', 'Boost 1.0', 'MIT', 'BSD 3'],
     name: 'license'
-  },
-  {
-    type: 'input',
-    message: '',
-    name: 'badges'
   },
   {
     type: 'input',
@@ -88,7 +78,7 @@ ${data.description}
 ## Table of Contents
 [Installation](#Installation)
 [Usage](#Usage)
-[License](#License)
+${renderLicenseSection()}
 [Contributing](#Contributing)
 [Tests](#Tests)
 [Questions](#Questions)
@@ -97,14 +87,12 @@ ${data.description}
 ${data.installation}
 
 ## Usage
-
 ${data.usage}
-## License
 
+${renderLicenseLink(data.license)}
+${renderLicenseBadge(data.license)}
 ${data.license}
 
-## Badges
-${data.badges}
 
 ## How to Contribute
 ${data.contributing}
@@ -115,8 +103,41 @@ ${data.tests}
 ## Questions
 https://github.com/${data.username}
 Please email me at <${data.email}> for any additional questions.
-  `;
-  }
   
+
+`;
+}
+  
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+    if (license === "None") {
+        return ""
+    } else {
+    return `[(https://img.shields.io/badge/License-${license}-yellowgreen.svg)]`
+}
+}
+
+// TODO: Create a function that returns the license link
+// If there is no license, return an empty string
+function renderLicenseLink(license) {
+    if (license === "None") {
+        return ""
+    } else {
+    return `## License`
+}
+}
+
+// TODO: Create a function that returns the license section of README
+// If there is no license, return an empty string
+function renderLicenseSection(license) {
+    if (license === "None") {
+        return ""
+    } else {
+    return `[License](#License)`
+}
+}
+
+
 // Function call to initialize app
 init();
