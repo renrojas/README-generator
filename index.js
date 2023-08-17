@@ -72,6 +72,9 @@ function init() {
 function generateMarkdown(data) {
     console.log(data)
     return `# ${data.title}
+
+${renderLicenseBadge(data.license)}
+
 ## Description
 ${data.description}
 
@@ -90,7 +93,6 @@ ${data.installation}
 ${data.usage}
 
 ${renderLicenseLink(data.license)}
-${renderLicenseBadge(data.license)}
 ${data.license}
 
 
@@ -111,10 +113,11 @@ Please email me at <${data.email}> for any additional questions.
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
+    const badge = license.replace(/\s/g, "");
     if (license === "None") {
         return ""
     } else {
-    return `[(https://img.shields.io/badge/License-${license}-yellowgreen.svg)]`
+    return `![github license](https://img.shields.io/badge/License-${badge}-yellowgreen.svg)`
 }
 }
 
