@@ -1,8 +1,8 @@
-// TODO: Include packages needed for this application
+//packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+//questions for user input
 
 const questions = [
     {
@@ -53,10 +53,10 @@ const questions = [
   },
 ];
 
-// TODO: Create a function to write README file
+//function to write README file
 function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
+//function to initialize app
 function init() {
     inquirer.prompt(questions)
     .then((response) => {
@@ -110,8 +110,7 @@ Please email me at <${data.email}> for any additional questions.
 `;
 }
   
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+//function that returns a license badge
 function renderLicenseBadge(license) {
     const badge = license.replace(/\s/g, "");
     if (license === "None") {
@@ -121,8 +120,7 @@ function renderLicenseBadge(license) {
 }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+//function that returns the license link
 function renderLicenseLink(license) {
     if (license === "None") {
         return ""
@@ -131,8 +129,7 @@ function renderLicenseLink(license) {
 }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+//function that returns the license section of README
 function renderLicenseSection(license) {
     if (license === "None") {
         return ""
@@ -142,5 +139,5 @@ function renderLicenseSection(license) {
 }
 
 
-// Function call to initialize app
+//function call to initialize app
 init();
